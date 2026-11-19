@@ -1,16 +1,45 @@
 {
-  "id": "coolcode-tool-template",
-  "title": "CoolCode Tool Starter",
-  "description": "A browser-only example that trims lines and removes exact duplicates.",
-  "category": "security",
-  "tags": ["text", "lines", "duplicates"],
-  "icon": "scan-search",
-  "url": "/coolcode-tool-template/",
-  "source": "https://github.com/jsdyer/coolcode-tool-template",
+  "id": "ix-ledger",
+  "title": "IX Ledger",
+  "description": "Compare Canadian internet exchanges across dated snapshots and find which networks appeared, left or changed their listed connections.",
+  "category": "liminal-tools",
+  "tags": [
+    "peering",
+    "VANIX",
+    "CANIX",
+    "TorIX",
+    "internet exchanges"
+  ],
+  "icon": "network",
+  "url": "/ix-ledger/",
+  "source": "https://github.com/jsdyer/ix-ledger",
   "hosting": "project",
   "access": "browser",
   "data_info": {
-    "mode": "local",
-    "detail": "The browser reads the text you paste and compares its lines."
+    "mode": "snapshot",
+    "detail": "CAIDA’s dated PeeringDB archives record exchange locations, network names and self-reported interface speeds.",
+    "cadence": "Weekly",
+    "probes": [
+      {
+        "url": "https://coolcode.ca/ix-ledger/data/status.json",
+        "path": [
+          "end"
+        ],
+        "label": "Latest snapshot",
+        "count_at": {
+          "path": [
+            "memberships"
+          ],
+          "unit": "ASN and exchange pairs"
+        }
+      },
+      {
+        "url": "https://coolcode.ca/ix-ledger/data/status.json",
+        "path": [
+          "retrieved"
+        ],
+        "label": "Data retrieved"
+      }
+    ]
   }
 }
