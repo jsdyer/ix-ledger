@@ -29,6 +29,7 @@ async function start(){const state=await data('status');dates=state.dates;
  options('from',dates.map(d=>[d,d]),initial.get('from')||dates.find(d=>d.startsWith('2025'))||dates[0]);options('to',dates.map(d=>[d,d]),initial.get('to')||dates.at(-1));
  if([...get('change').options].some(o=>o.value===initial.get('change')))get('change').value=initial.get('change');
  get('query').value=initial.get('query')||'';
+ get('archive-credit').replaceChildren('The CAIDA UCSD PeeringDB Dataset, '+state.dates[0]+' to '+state.dates.at(-1)+'. ',link('CAIDA dataset record','https://www.caida.org/catalog/datasets/peeringdb/'));
  get('stamp').textContent=state.exchanges+' exchanges in the latest edition · '+dates.length+' snapshots · Retrieved '+state.retrieved;
  for(const id of ids)get(id).addEventListener(id==='query'?'input':'change',()=>render(id));
  get('export').onclick=()=>csv('ix-ledger-'+get('exchange').value,['ASN','Network','Change','Earlier snapshot','Earlier Mbps','Earlier interfaces without rate','Later snapshot','Later Mbps','Later interfaces without rate'],visible.map(r=>[r.asn,r.name,names[r.change],get('from').value,r.old?.[3],r.old?.[4],get('to').value,r.now?.[3],r.now?.[4]]));render();

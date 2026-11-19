@@ -15,3 +15,7 @@ The collector joins each netixlan record to its exchange LAN and exchange, limit
 Data are derived from PeeringDB, via [CAIDA’s PeeringDB archive](https://www.caida.org/catalog/datasets/peeringdb/) and its [dated downloads](https://data.caida.org/datasets/peeringdb-v2/). Every comparison links its two source files and live exchange record. The weekly workflow records one additional edition. Run `python scripts/refresh.py --date YYYY-MM-DD` to add a specific day. A failed import leaves the existing live site in place.
 
 Use `node --test tests/*.test.mjs`, `python -m unittest discover -s tests` and `python scripts/build.py` for local checks and an offline site build.
+
+## Archive citation
+
+The CAIDA UCSD PeeringDB Dataset, 2018-11-01 to 2026-11-18 (launch editions). The application updates this date range as it gains samples. [Dataset record](https://www.caida.org/catalog/datasets/peeringdb/) · [Public data agreement](https://www.caida.org/about/legal/aua/caida_pub_aua.html) · [Report a publication using CAIDA data](https://www.caida.org/catalog/datasets/publications/report-publication/).
