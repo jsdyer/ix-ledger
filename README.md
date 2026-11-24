@@ -19,3 +19,11 @@ Use `node --test tests/*.test.mjs`, `python -m unittest discover -s tests` and `
 ## Archive citation
 
 The CAIDA UCSD PeeringDB Dataset, 2018-11-01 to 2026-11-18 (launch editions). The application updates this date range as it gains samples. [Dataset record](https://www.caida.org/catalog/datasets/peeringdb/) · [Public data agreement](https://www.caida.org/about/legal/aua/caida_pub_aua.html) · [Report a publication using CAIDA data](https://www.caida.org/catalog/datasets/publications/report-publication/).
+
+<!-- schedule-reliability -->
+## Schedule reliability
+
+Public GitHub repositories can have scheduled workflows disabled after 60 days of inactivity. A separate weekly [schedule guard](.github/workflows/schedule-guard.yml) calls GitHub's enable-workflow API for an explicit list of refresh workflows and itself. It can restore workflows disabled for inactivity, preserves manually disabled workflows, and runs independently of collection failures.
+
+This is an interim mitigation, not a scheduling guarantee: GitHub does not document active-workflow renewal as a permanent exemption, and scheduled runs can be delayed or dropped. A scheduler on our own Linux server is the planned independent trigger. The guard does not collect data, create dummy commits, or change source/check timestamps; successful collection and published data freshness still need monitoring.
+<!-- /schedule-reliability -->
